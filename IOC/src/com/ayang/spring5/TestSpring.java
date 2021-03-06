@@ -1,10 +1,12 @@
 package com.ayang.spring5;
 
-import com.ayang.spring5.Book;
-import com.ayang.spring5.User;
+import com.ayang.spring5.Annotation.Dao.UserDao;
+import com.ayang.spring5.Annotation.Service.UserService;
 import com.ayang.spring5.beanlife.BeanLife;
+import com.ayang.spring5.config.SpringConfig;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -90,5 +92,22 @@ public class TestSpring {
         System.out.println("第四步 获取创建bean实例对象");
         System.out.println("beanLife = " + beanLife);
         context.close();
+    }
+
+    @Test
+    public void testAnnotation(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean3.xml");
+        UserService userService = context.getBean("userService", UserService.class);
+        System.out.println("userService = " + userService);
+        userService.add();
+    }
+
+    @Test
+    public void testAnnotation2() {
+        //加载配置类
+        ApplicationContext context
+                =  new AnnotationConfigApplicationContext(SpringConfig.class);
+        UserService userService = context.getBean("userService", UserService.class);
+        System.out.println(userService);
     }
 }

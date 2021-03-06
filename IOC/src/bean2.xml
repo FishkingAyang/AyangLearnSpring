@@ -37,7 +37,9 @@ http://www.springframework.org/schema/util/spring-util.xsd">
     <bean id="myBean" class="com.ayang.spring5.factory.MyBean"></bean>
     <bean id="userSingle" class="com.ayang.spring5.User" scope="singleton"></bean>
     <bean id="userPro" class="com.ayang.spring5.User" scope="prototype"></bean>
-    <bean id="beanLife" class="com.ayang.spring5.beanlife.BeanLife" init-method="initMethod" destroy-method="destroyMethod">
+    <bean id="beanLife" class="com.ayang.spring5.beanlife.BeanLife"  init-method="initMethod" destroy-method="destroyMethod">
         <property name="name" value="Ayang"></property>
     </bean>
+
+    <bean id="myBeanPost" class="com.ayang.spring5.beanlife.MyBeanPost"></bean>
 </beans>
