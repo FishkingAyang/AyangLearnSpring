@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.ayang.spring5.User"></bean>
+<!--set方法注入-->
+    <bean id="book" class="com.ayang.spring5.Book">
+        <property name="name" >
+            <value><![CDATA[<特殊符号注入>]]></value>
+        </property>
+        <property name="author" value="Ayang"></property>
+        <!--注入外部Bean-->
+<!--        <property name="user" ref="user"></property>-->
+        <!--注入内部Bean-->
+        <property name="user">
+            <bean id="user2" class="com.ayang.spring5.User"></bean>
+        </property>
+    </bean>
+<!--构造方法注入-->
+    <bean id="order" class="com.ayang.spring5.Order">
+        <constructor-arg name="orderName" value="AX210"></constructor-arg>
+        <constructor-arg name="customer" value="Ayang"></constructor-arg>
+    </bean>
+<!--p标签注入-->
+    <bean id="book2" class="com.ayang.spring5.Book" p:name="AyangCanP" p:author="Ayang"></bean>
+</beans>
